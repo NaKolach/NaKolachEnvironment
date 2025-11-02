@@ -1,0 +1,57 @@
+services:
+  postgres:
+    container_name: nakolach-postgres
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+    volumes:
+      - ./postgres/init.sh:/docker-entrypoint-initdb.d/init.sh:ro
+      - ./postgres/pg_hba.conf:/opt/postgres/pg_hba.conf:ro
+      - postgres:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: on-failure:3
+
+  postgres-migrator:
+    container_name: migrate
+    image: migrate/migrate:v4.18.1
+    volumes:
+      - ./postgres/migrations.sh:/usr/local/bin/migrations.sh
+      - ./server:/server
+    entrypoint: /usr/local/bin/migrations.sh
+    restart: no
+
+  server:
+    container_name: nakolach-server
+    image: nakolach-server
+    build:
+      context: ./server
+      target: base
+      dockerfile: ./Dockerfile
+    environment:
+      DATABASE_CONNECTION_STRING: "Host=postgres;Database=nakolach_server;Username=postgres;Password=postgres"
+    volumes:
+      - ./server:/workspace
+    ports:
+      - "5000:5000"
+    entrypoint: ./dev-entrypoint.sh
+    restart: on-failure:3
+
+  panel:
+    container_name: nakolach-panel
+    image: nakolach-panel
+    build:
+      context: ./panel
+      target: base
+      dockerfile: Dockerfile  
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./panel:/workspace
+    entrypoint: ./dev-entrypoint.sh
+    restart: on-failure:3
+
+volumes:
+  postgres:

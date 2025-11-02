@@ -1,0 +1,6 @@
+[submodule "panel"]
+	path = panel
+	url = git@github.com:NaKolach/NaKolachPanel.git
+[submodule "server"]
+	path = server
+	url = git@github.com:NaKolach/NaKolachServer.git
