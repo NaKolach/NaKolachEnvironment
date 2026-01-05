@@ -1,4 +1,12 @@
 services:
+  haproxy:
+    container_name: haproxy
+    ports:
+      - 80:80
+    image: haproxytech/haproxy-alpine
+    volumes:
+      - ./haproxy/haproxy.cfg:/etc/haproxy/haproxy.cfg
+
   postgres:
     container_name: nakolach-postgres
     image: postgres:15
