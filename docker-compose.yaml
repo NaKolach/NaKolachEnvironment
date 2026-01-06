@@ -1,4 +1,4 @@
-services:  
+services:
   haproxy:
     container_name: haproxy
     ports:
@@ -40,6 +40,7 @@ services:
       dockerfile: ./Dockerfile
     environment:
       DATABASE_CONNECTION_STRING: "Host=postgres;Database=nakolach_server;Username=postgres;Password=postgres"
+      OSM_DATABASE_CONNECTION_STRING: "Host=postgres;Database=osm_gdansk;Username=postgres;Password=postgres"
     volumes:
       - ./server:/workspace
     ports:
@@ -69,6 +70,6 @@ services:
     volumes:
       - ./osm-ingest/data:/work/data
     restart: "no"
-    
+
 volumes:
   postgres:
