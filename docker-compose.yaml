@@ -1,4 +1,4 @@
-services:
+services:  
   haproxy:
     container_name: haproxy
     ports:
@@ -9,7 +9,7 @@ services:
 
   postgres:
     container_name: nakolach-postgres
-    image: postgres:15
+    image: postgis/postgis:15-3.4
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -61,5 +61,14 @@ services:
     entrypoint: ./dev-entrypoint.sh
     restart: on-failure:3
 
+  osm-ingest:
+    container_name: osm-ingest
+    build: ./osm-ingest
+    depends_on:
+      - postgres
+    volumes:
+      - ./osm-ingest/data:/work/data
+    restart: "no"
+    
 volumes:
   postgres:
