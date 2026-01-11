@@ -71,5 +71,21 @@ services:
       - ./osm-ingest/data:/work/data
     restart: "no"
 
+  graphhopper:
+    container_name: graphhopper
+    image: israelhikingmap/graphhopper:10.2
+    ports:
+      - "8989:8989"
+      - "8990:8990"
+    depends_on:
+      - osm-ingest
+    volumes:
+      - ./osm-ingest/data/poland.osm.pbf:/data/gdansk.osm.pbf:ro
+      - ./graphhopper/graph:/data/graph
+      - ./graphhopper/entrypoint.sh:/entrypoint.sh:ro
+      - ./graphhopper/config.yml:/config.yml:ro
+    entrypoint: /entrypoint.sh
+    restart: no
+
 volumes:
   postgres:
