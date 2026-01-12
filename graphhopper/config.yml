@@ -1,0 +1,59 @@
+graphhopper:
+  datareader.file: "/data/gdansk.osm.pbf"
+  graph.location: "/data/graph"
+
+  profiles:
+    - name: bike
+      custom_model:
+        priority:
+          - if: "bike_access"
+            multiply_by: "bike_priority"
+          - else: ""
+            multiply_by: "0"
+          
+          - if: "surface == COBBLESTONE || surface == PAVING_STONES"
+            multiply_by: "0.5"
+          - if: "bike_network != MISSING"
+            multiply_by: "1.2"
+            
+        speed:
+          - if: "true"
+            limit_to: "bike_average_speed"
+        
+        distance_influence: 70
+
+    - name: mtb
+      custom_model:
+        priority:
+          - if: "mtb_access"
+            multiply_by: "mtb_priority"
+          - else: ""
+            multiply_by: "0"
+        speed:
+          - if: "true"
+            limit_to: "mtb_average_speed"
+
+  profiles_ch:
+    - profile: bike
+    - profile: mtb
+
+  import.osm.ignored_highways: ""
+  graph.encoded_values: surface,road_class,road_access,bike_network,toll,bike_access,bike_priority,bike_average_speed,mtb_access,mtb_priority,mtb_average_speed
+
+server:
+  application_connectors:
+    - type: http
+      port: 8989
+      bind_host: 0.0.0.0
+  admin_connectors:
+    - type: http
+      port: 8990
+      bind_host: 0.0.0.0
+
+  request_log:
+    appenders: []
+
+logging:
+  level: INFO
+  appenders:
+    - type: console

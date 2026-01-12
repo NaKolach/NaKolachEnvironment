@@ -1,1 +1,3 @@
 certs/**
+osm-ingest/data/**
+graphhopper/graph/**
