@@ -41,6 +41,9 @@ services:
     environment:
       DATABASE_CONNECTION_STRING: "Host=postgres;Database=nakolach_server;Username=postgres;Password=postgres"
       OSM_DATABASE_CONNECTION_STRING: "Host=postgres;Database=osm_gdansk;Username=postgres;Password=postgres"
+      AUTH_ISSUER: "http://nakolach.com"
+      AUTH_AUDIENCE: "http://nakolach.com"
+      AUTH_KEY: ""
     volumes:
       - ./server:/workspace
     ports:
