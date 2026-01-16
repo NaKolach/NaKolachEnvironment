@@ -4,14 +4,18 @@
 
 After cloning the repository, to setup the environment, do the following steps:
 
-```
+### 1. Submodules
+
+```shell
 cd NaKolachEnvironment
 
 git submodule init
 git submodule update --remote
 ```
 
-Then you have to overrite your local DNS.
+### 2. DNS override
+
+Then you have to override your local DNS.
 
 ### Linux
 
@@ -37,14 +41,26 @@ At the end of hosts file add this line:
 127.0.0.1 nakolach.com
 ```
 
+### 3. CA
+
+Because we use self signed CA certificates with HTTPS redirection you have to generate your own CA.
+
+```shell
+cd certs
+./generate_certs.sh
+```
+
+At last import the ca.crt certificate into your browser.
+
 ## Running
 
-Now you are ready to go. To launch the environment use `make up` command. The panel will be availabe under http://nakolach.com address.
+Now you are ready to go. To launch the environment use `make up` command. The panel will be availabe under https://nakolach.com address.
 
-### Other make commands:
+### Available make commands:
 
 ```
 make up # launches the environment
-make stop # shuts down the environment and keeps the containers
-make down # shuts down the environment and removes the containers
+make stop # shut down the environment and keep the containers
+make down # shut down the environment and remove the containers
+make clean # shut down and clean up the environment
 ```
