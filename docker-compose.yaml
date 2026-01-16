@@ -7,7 +7,7 @@ services:
     image: haproxytech/haproxy-alpine
     volumes:
       - ./haproxy/haproxy.cfg:/etc/haproxy/haproxy.cfg
-      - ./certs/nakolach.pem:/etc/haproxy/certs/nakolach.pem:ro
+      - ./certs/nakolach.com.pem:/etc/haproxy/certs/nakolach.com.pem:ro
 
   postgres:
     container_name: nakolach-postgres
