@@ -3,9 +3,11 @@ services:
     container_name: haproxy
     ports:
       - 80:80
+      - 443:443
     image: haproxytech/haproxy-alpine
     volumes:
       - ./haproxy/haproxy.cfg:/etc/haproxy/haproxy.cfg
+      - ./certs/nakolach.pem:/etc/haproxy/certs/nakolach.pem:ro
 
   postgres:
     container_name: nakolach-postgres

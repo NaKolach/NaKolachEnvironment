@@ -1,3 +1,6 @@
 certs/**
+!certs/generate_certs.sh
+!certs/csr.conf
+
 osm-ingest/data/**
 graphhopper/graph/**
