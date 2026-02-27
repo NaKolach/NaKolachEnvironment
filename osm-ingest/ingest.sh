@@ -43,7 +43,9 @@ mkdir -p "$DATA_DIR"
 if [ ! -f "$POLAND_PBF" ]; then
   echo "Downloading Poland OSM extract"
   curl -L -o "$POLAND_PBF" \
+  curl -L -f -o "${POLAND_PBF}.tmp" \
     https://download.geofabrik.de/europe/poland-latest.osm.pbf
+  mv "${POLAND_PBF}.tmp" "$POLAND_PBF"
 else
   echo "Poland extract already present"
 fi
