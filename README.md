@@ -102,6 +102,6 @@ make up # launches the environment
 
 This project was collaboratively created by:
 
-- **Kacper Jankowski** - [GitHub](https://github.com/X3raFin) | [LinkedIn](https://www.linkedin.com/in/kacper-jankowski-webdev/) | [Portfolio](https://portfolio-neon-one-lb87d8f29l.vercel.app/) | 📧 kacper.jankowski.webdev@gmail.com
+- **Kacper Jankowski** - [GitHub](https://github.com/X3raFin) | [LinkedIn](https://www.linkedin.com/in/kacper-jankowski-webdev/) | [Portfolio](https://kacper-jan-webdev.vercel.app/) | 📧 kacper.jankowski.webdev@gmail.com
 - **Jakub Sobota** - [GitHub](https://github.com/Jacko0b) | [LinkedIn](https://www.linkedin.com/in/link-jakuba/)
 - **Maciej Bereda** - [GitHub](https://github.com/gl00man) | [LinkedIn](https://www.linkedin.com/in/maciejbereda/)
