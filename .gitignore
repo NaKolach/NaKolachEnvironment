@@ -1,3 +1,5 @@
+.env
+
 certs/**
 !certs/generate_certs.sh
 !certs/csr.conf

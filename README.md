@@ -86,7 +86,11 @@ cd certs
 ./generate_certs.sh
 ```
 
-At last import the ca.crt certificate into your browser.
+For the last step, import the ca.crt certificate into your browser.
+
+### 4. Secrets
+
+Last step of app environment configuration is setting up the secrets. Rename `.env.example` file to `.env`, then inside set your postgres superuser name, password and authorization key which will be used to sign app JWT tokens.
 
 ## Running
 
@@ -95,7 +99,10 @@ Now you are ready to go. To launch the environment use `make up` command. The pa
 ### Available make commands:
 
 ```
-make up # launches the environment
+make up
+make build-up
+make down
+make stop
 ```
 
 ## ☎️ Authors & Contact
