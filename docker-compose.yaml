@@ -71,9 +71,9 @@ services:
     container_name: osm-ingest
     build: ./osm-ingest
     environment:
-      DB_HOST: "postgres"
-      DB_USER: ${POSTGRES_USER}
-      DB_PASS: ${POSTGRES_PASSWORD}
+      PGHOST: "postgres"
+      PGUSER: ${POSTGRES_USER}
+      PGPASSWORD: ${POSTGRES_PASSWORD}
       DB_NAME: "osm_gdansk"
     depends_on:
       - postgres
